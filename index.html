@@ -84,7 +84,29 @@
       outline: none;
       box-shadow: 0 0 10px #00ffe1;
       background: #0f0f1a;
-  
+    }
+
+    /* Estilo para campos inválidos */
+    input:invalid {
+      border-color: #ff3860;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: center;
+      margin-top: 15px;
+    }
+
+    .checkbox input {
+      margin-right: 10px;
+      transform: scale(1.2);
+      min-width: 18px;
+      min-height: 18px;
+    }
+
+    .checkbox label {
+      font-size: clamp(0.875rem, 3.5vw, 1rem);
+      line-height: 1.4;
     }
 
     button {
@@ -160,13 +182,105 @@
         margin-top: 15px;
       }
     }
+  </style>
+</head>
+<body>
 
-    /* Mejoras para tablets */
-    @media (min-width: 481px) and (max-width: 768px) {
-      .hero img {
-        max-width: 180px;
-      }
+  <div class="hero">
+    <img src="https://i.ibb.co/zVWk7dMy/LOGO-PUNTOS-NEMESIS.png" alt="LOGO-PUNTOS-NEMESIS">
+    <h1>¡Únete a la aventura Gamer!</h1>
+  </div>
 
+  <div class="form-container" id="formulario">
+    <form id="gamerForm" action="https://formspree.io/f/movdwjnb" method="POST">
+      <label for="nombre">Nombre y Apellido del niño:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="edad">Edad:</label>
+      <input type="number" id="edad" name="edad" min="3" max="16" required>
+
+      <label for="talla">Talla de camiseta:</label>
+      <select id="talla" name="talla" required>
+        <option value="">-- Selecciona --</option>
+        <option value="4">4</option>
+        <option value="6">6</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12">12</option>
+        <option value="14">14</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+      </select>
+
+      <label for="acudiente">Nombre del acudiente:</label>
+      <input type="text" id="acudiente" name="acudiente" required>
+
+      <label for="telefono">Teléfono / WhatsApp:</label>
+      <input 
+        type="tel" 
+        id="telefono" 
+        name="telefono" 
+        pattern="[0-9]{10}" 
+        maxlength="10" 
+        title="Por favor ingresa exactamente 10 dígitos (sin espacios, guiones o código de país)" 
+        required
+      >
+
+      <label for="horario">Horario preferido:</label>
+      <select id="horario" name="horario" required>
+        <option value="">-- Selecciona --</option>
+        <option value="8-12">8:00 a.m. - 12:00 p.m.</option>
+        <option value="2-6">2:00 p.m. - 6:00 p.m.</option>
+      </select>
+
+      <div class="checkbox">
+        <input type="checkbox" id="asistire" name="asistire" required>
+        <label for="asistire">¡Sí, asistiré!</label>
+      </div>
+
+      <button type="submit">¡Enviar ahora!</button>
+    </form>
+
+    <div class="mensaje-exito" id="mensajeExito">
+      🎉 ¡Gracias por registrarte, mini gamer! Nos vemos en el evento 👾
+    </div>
+  </div>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/573027530234" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="WhatsApp">
+  </a>
+
+  <style>
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse 1.5s infinite;
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #128C7E;
+      transform: scale(1.1);
+    }
+
+    .whatsapp-float img {
+      width: 40px;
+      height: 40px;
+    }
 
     @keyframes pulse {
       0% { transform: scale(1); }
@@ -188,91 +302,6 @@
       }
     }
   </style>
-    
-    }
-  </style>
-</head>
-<body>
-
-  <div class="hero">
-    <img src="https://i.ibb.co/zVWk7dMy/LOGO-PUNTOS-NEMESIS.png" alt="LOGO-PUNTOS-NEMESIS">
-    <h1>¡Únete a la aventura Gamer!</h1>
-  </div>
-
-  <div class="form-container" id="formulario">
-    <form id="gamerForm" action="https://formspree.io/f/movdwjnb" method="POST">
-      <label for="nombre">Nombre y Apellido del niño:</label>
-      <input type="text" id="nombre" name="nombre" required>
-
-      <label for="edad">Edad:</label>
-      <input type="number" id="edad" name="edad" min="3" max="16" required>
-
-    <!DOCTYPE html>
-<html>
-<head>
-  <title>Formulario con Validación de Teléfono</title>
-  <style>
-    input:invalid {
-      border-color: #ff0000;
-    }
-  </style>
-</head>
-<body>
-  <form id="gamerForm">
-    <label for="telefono">Teléfono / Whatsapp:</label>
-    <input 
-      type="tel"
-      id="telefono"
-      name="telefono"
-      pattern="[0-9]{10}"
-      maxlength="10"
-      title="Ejemplo: 3027530234 (10 dígitos)"
-      required
-    >
-    
-    <button type="submit">Enviar</button>
-  </form>
-
-  <script>
-    document.getElementById('gamerForm').addEventListener('submit', function(e) {
-      const telefono = document.getElementById('telefono').value;
-      
-      if (!/^[0-9]{10}$/.test(telefono)) {
-        e.preventDefault();
-        alert('Error: El teléfono debe tener exactamente 10 dígitos numéricos');
-        document.getElementById('telefono').focus();
- </select>
-
-      <label for="talla">Talla de camiseta:</label>
-      <select id="talla" name="talla" required>
-        <option value="">-- Selecciona --</option>
-        <option value="4">4</option>
-        <option value="6">6</option>
-        <option value="8">8</option>
-        <option value="10">10</option>
-        <option value="12">12</option>
-        <option value="14">14</option>
-        <option value="S">S</option>
-        <option value="M">M</option>
-      </select>
-
-      <label for="acudiente">Nombre del acudiente:</label>
-      <input type="text" id="acudiente" name="acudiente" required>
-
-      <label for="horario">Horario preferido:</label>
-      <select id="horario" name="horario" required>
-        <option value="">-- Selecciona --</option>
-        <option value="8-12">8:00 a.m. - 12:00 p.m.</option>
-        <option value="2-6">2:00 p.m. - 6:00 p.m.</option>
-      </select>
-
-      <button type="submit">¡Enviar ahora!</button>
-    </form>
-
-    <div class="mensaje-exito" id="mensajeExito">
-      🎉 ¡Gracias por registrarte, mini gamer! Nos vemos en el evento 👾
-    </div>
-  </div>
 
   <script>
     const form = document.getElementById('gamerForm');
@@ -290,9 +319,18 @@
       }
     });
 
+    // Validación del teléfono antes de enviar
     form.addEventListener('submit', async function(event) {
       event.preventDefault();
       
+      // Validar teléfono
+      const telefono = document.getElementById('telefono').value;
+      if (!/^[0-9]{10}$/.test(telefono)) {
+        alert('El teléfono debe tener exactamente 10 dígitos numéricos');
+        document.getElementById('telefono').focus();
+        return;
+      }
+
       // Mostrar feedback visual
       const submitButton = form.querySelector('button[type="submit"]');
       const originalText = submitButton.textContent;
@@ -325,39 +363,15 @@
         submitButton.disabled = false;
       }
     });
+
+    // Validación en tiempo real del teléfono
+    document.getElementById('telefono').addEventListener('input', function(e) {
+      // Solo permite números y limita a 10 dígitos
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+    });
   </script>
 </body>
-    <!-- Botón flotante de WhatsApp -->
-  <a href="https://wa.me/573027530234" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-    <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="WhatsApp">
-  </a>
-  <style>
-    .whatsapp-float {
-      position: fixed;
-      width: 60px;
-      height: 60px;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: #FFF;
-      border-radius: 50px;
-      text-align: center;
-      font-size: 30px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: pulse 1.5s infinite;
-      transition: all 0.3s ease;
-    }
-
-    .whatsapp-float:hover {
-      background-color: #128C7E;
-      transform: scale(1.1);
-    }
-
-    .whatsapp-float img {
+</html>
       width: 40px;
       height: 40px;
     }
